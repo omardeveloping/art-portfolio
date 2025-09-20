@@ -157,3 +157,8 @@ ALLOWED_HOSTS = [
     "omarmontanares.com",
     "www.omarmontanares.com",
 ]
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://omarmontanares.com",
+    "https://www.omarmontanares.com",
+]
