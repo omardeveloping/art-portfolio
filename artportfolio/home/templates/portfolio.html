@@ -1,0 +1,58 @@
+{% extends "master.html" %} {% block content %} {% load static %}
+
+<div class="album py-5">
+  <div class="container">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      {% for item in imagenes %}
+      <div class="col">
+        <div class="card shadow-sm">
+          <img
+            src="{{ item.media }}"
+            alt="Capri"
+            class="bd-placeholder-img card-img-top"
+            width="100%"
+          />
+          <title>{{ item.title }}</title>
+          <rect width="100%" height="100%" fill="#55595c"></rect>
+          <div class="card-body">
+            <p class="card-text">{{ item.description }}</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <button
+                  type="button"
+                  onclick="likeImage({{ item.id }})"
+                  id="likes-{{ item.id }}"
+                  class="btn btn-sm btn-outline-secondary"
+                >
+                  Praise
+                </button>
+              </div>
+              <small class="text-body-secondary" id="counter-{{ item.id}}"
+                >{{ item.likes }} praises</small
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+<script>
+  function likeImage(id) {
+    fetch(`/like/${id}/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-CSRFToken": "{{ csrf_token }}",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        document.getElementById(
+          `counter-${id}`
+        ).textContent = `${data.likes} praises`;
+      });
+  }
+</script>
+{% endblock %}
