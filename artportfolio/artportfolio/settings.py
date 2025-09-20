@@ -162,3 +162,11 @@ CSRF_TRUSTED_ORIGINS = [
     "https://omarmontanares.com",
     "https://www.omarmontanares.com",
 ]
+
+from django.conf import settings
+from django.core.files.storage import default_storage
+
+if not settings.DEBUG:
+    from django.conf import settings
+    settings.DEFAULT_FILE_STORAGE = "django.core.files.storage.FileSystemStorage"
+    settings.MEDIA_URL = "https://omarmontanares.com/media/"
