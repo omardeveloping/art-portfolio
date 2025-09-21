@@ -2,11 +2,9 @@ from django.shortcuts import render
 from rest_framework import viewsets
 from .models import PortfolioImage
 from .serializers import PortfolioSerializer
-import requests
 
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .models import PortfolioImage
 from django.shortcuts import get_object_or_404
 
 from .permissions import StaffWritePermission
@@ -18,9 +16,8 @@ def home(request):
 
 @api_view(["GET"])
 def portfolio(request):
-    response = requests.get("http://127.0.0.1:8000/api/images/")
-    data = response.json()
-    return render(request, 'portfolio.html', {"imagenes": data})
+    images = PortfolioImage.objects.all()
+    return render(request, "portfolio.html", {"imagenes": images})
 
 @api_view(["POST"])
 def like_image(request, id):
