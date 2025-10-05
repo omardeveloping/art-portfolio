@@ -151,14 +151,6 @@ ACCOUNT_EMAIL_VERIFICATION = "none"
 ACCOUNT_AUTHENTICATION_METHOD = "username"
 ACCOUNT_EMAIL_REQUIRED = False
 
-ALLOWED_HOSTS = [
-    "127.0.0.1",
-    "localhost",
-    "92.113.33.6",
-    "omarmontanares.com",
-    "www.omarmontanares.com",
-]
-
 CSRF_TRUSTED_ORIGINS = [
     "https://omarmontanares.com",
     "https://www.omarmontanares.com",
