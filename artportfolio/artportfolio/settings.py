@@ -154,6 +154,10 @@ ACCOUNT_EMAIL_REQUIRED = False
 CSRF_TRUSTED_ORIGINS = [
     "https://omarmontanares.com",
     "https://www.omarmontanares.com",
+    "http://72.60.167.16",
+    "http://72.60.167.16:1337",
+    "https://72.60.167.16",
+    "https://72.60.167.16:1337",
 ]
 
 from django.conf import settings
